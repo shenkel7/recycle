@@ -8,6 +8,7 @@ import Webcam from './screens/WebcamPage';
 import {loadGraphModel} from '@tensorflow/tfjs-converter';
 import { useDispatch } from 'react-redux';
 import PizzaSlice from './store/PizzaSlice';
+import ImageUpload from './screens/ImageUpload';
 
 // TODO change this
 const MODEL_URL = 'model_directory/model.json';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/webcam" element={<Webcam />} />
+        <Route path="/upload" element={<ImageUpload />} />
       </Routes>
     </div>
   );

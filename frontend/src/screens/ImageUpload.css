@@ -1,0 +1,22 @@
+.card {
+    background-color: rgb(242, 223, 175);
+    margin: 10;
+    flex: 1;
+    padding: 10;
+    justify-content: "center";
+    align-items: "center";
+    margin-right: 100;
+  }
+
+
+.card:hover {
+    background-color: rgb(229, 198, 118);
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 100;
+     */
+    
+}
