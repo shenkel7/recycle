@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-import logo from './logo.svg';
 import './App.css';
 import "@tensorflow/tfjs";
 import Home from './screens/Home';
 import About from './screens/About';
+import Webcam from './screens/WebcamPage';
 import {loadGraphModel} from '@tensorflow/tfjs-converter';
 import { useDispatch } from 'react-redux';
 import PizzaSlice from './store/PizzaSlice';
@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/webcam" element={<Webcam />} />
       </Routes>
     </div>
   );

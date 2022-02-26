@@ -1,7 +1,5 @@
-import React from 'react'
 import ResponsiveAppBar from '../components/Navbar'
 import Button from '@mui/material/Button';
-import './Home.css'
 import recycle_icon from '../images/recycle 1.svg'
 
 const first = {
