@@ -1,7 +1,5 @@
-import React from 'react'
 import ResponsiveAppBar from '../components/Navbar'
 import Button from '@mui/material/Button';
-import './Home.css'
 import recycle_icon from '../images/recycle 1.svg'
 
 const first = {
@@ -12,7 +10,7 @@ const first = {
     left: '100px',
     fontSize: '42px',
     width: '870px',
-    fontFamily: 'Lato',
+    // fontFamily: 'Lato',
     fontWeight: '700'
 }
 
@@ -23,7 +21,7 @@ const second = {
     position: 'relative',
     left: '100px',
     opacity: '0.5',
-    fontFamily: 'Lato',
+    // fontFamily: 'Lato',
     fontWeight: '700'
 }
 
@@ -36,17 +34,40 @@ const third = {
     fontSize: "18px"
 }
 
+const row = {
+    display: 'flex'
+}
+
+const column = {
+    flex: "50%",
+    padding: "10px"
+}
+
+const image = {
+    paddingTop: '5em',
+}
+
 const Home = () => {
     return (
         <div>
             <ResponsiveAppBar />
-            <div style={first}>
-                <h1>Find out if an item is recyclable.</h1>
+            <div style={row}>
+                <div style={column}>
+                    <div style={first}>
+                        <h1>Find out if an item is recyclable.</h1>
+                    </div>
+                    <div style={second}>
+                        <h2>Click the button below to begin.</h2>
+                    </div>
+                    <Button variant="contained" style={third}>START</Button>
+                </div>
+                <div style={column}>
+                    <div style={image}>
+                        <img src={recycle_icon} alt="recycling icon" />
+                    </div>
+                    
+                </div>
             </div>
-            <div style={second}>
-                <h2>Click the button below to begin.</h2>
-            </div>
-            <Button variant="contained" style={third}>START</Button>
         </div>
     )
 }

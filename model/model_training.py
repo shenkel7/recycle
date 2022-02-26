@@ -76,4 +76,88 @@ validation_images = validation_datagen.flow_from_directory(directory = train_dat
                                                  batch_size = 128,
                                                  subset = 'validation')
 
+print(train_images.class_indices)
+
+# %%
+
+## Veiwing sample images to check if imports and rescaling worked correctly 
+fig, ax = plt.subplots(nrows = 1, ncols = 5, figsize = (20,20))
+
+for i in tqdm(range(5)):
+    rand1 = np.random.randint(len(train_images))
+    rand2 = np.random.randint(128)
+    ax[i].imshow(train_images[rand1][0][rand2])
+    ax[i].axis('off')
+    label = train_images[rand1][1][rand2]
+    if label == 1:
+        ax[i].set_title('Recyclable')
+    else:
+        ax[i].set_title('Non-Recyclable')
+
+# %%
+
+## Building the tensorflow model 
+# Maybe use a Convoluted neural network? 
+# transfer learning from tf VGG16 model as the base layer 
+
+model_base = VGG16(input_shape=(224, 224, 3),
+                    include_top=False, weights = "imagenet")
+
+for layer in model_base.layers:
+    layer.Trainable = False
+
+model_base.summary()
+# %%
+
+# Building custom layers onto the model
+model = Sequential()
+model.add(model_base)
+model.add(Dropout(0.2))
+model.add(Flatten())
+model.add(BatchNormalization())
+model.add(Dense(1024, kernel_initializer='he_uniform'))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(1024, kernel_initializer='he_uniform'))
+model.add(BatchNormalization())
+model.add(Activation("relu"))
+model.add(Dropout(0.2))
+model.add(Dense(1,activation='sigmoid'))
+
+model.summary()
+
+
+# %%
+
+# Compiling the model 
+optimizers = tensorflow.keras.optimizers.Adam(lr=0.001)
+model.compile(loss='binary_crossentropy', metrics = [tensorflow.keras.metrics.AUC(name = 'auc')],
+optimizer = optimizers)
+
+# defining callback functions 
+filepath = './best_weights.hdf5'
+
+earlystopping = EarlyStopping(monitor = 'val_auc', 
+                              mode = 'max' , 
+                              patience = 5,
+                              verbose = 1)
+
+checkpoint    = ModelCheckpoint(filepath, 
+                                monitor = 'val_auc', 
+                                mode='max', 
+                                save_best_only=True, 
+                                verbose = 1)
+
+
+callback_list = [earlystopping, checkpoint]
+
+
+
+# %%
+model_history=model.fit(train_images,
+                        validation_data=validation_images,
+                        epochs = 10,
+                        callbacks = callback_list,
+                        verbose = 1)
 # %%
