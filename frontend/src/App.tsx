@@ -12,7 +12,7 @@ import ImageUpload from './screens/ImageUpload';
 import Results from './screens/Results';
 
 // TODO change this
-const MODEL_URL = 'model_directory/model.json';
+const MODEL_URL = 'https://reecycles.herokuapp.com/';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +21,10 @@ function App() {
     const model = await loadGraphModel(MODEL_URL);
     dispatch(PizzaSlice.actions.setModel(model));
   };
+
+  useEffect(() => {
+    loadModel();
+  }, [])
 
   return (
     <div className="App">

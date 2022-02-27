@@ -65,7 +65,7 @@ const About = () => {
                 >
                 <div style={textTitle}>Reduce,  Reuse,  Recycle</div>
                 <img style={imageStyle} src="/assets/pexels-photo-761297.jpeg" alt="photo_icon" />
-                <div style={{fontSize: 20, textAlign: 'left'}}>
+                <div style={{fontSize: 20, textAlign: 'left', marginBottom: 20}}>
                     According to the Environmental Protection Agency, 292.4 million tons of 
                     Municipal Solid Waste (in other words, trash) was produced in the United States in 2018.
                     Of those 292.4 million tons, 94 million were recycled and composted: a recycling rate of 32.1
@@ -75,9 +75,14 @@ const About = () => {
                     we know something needs to change.
                     <br /><br/>
                     Reduce, reuse, recycle. The first two are more effective than recycling, but we recognize
-                    that some things are neither; that's what our app is for!
+                    that some things are neither; that's what our app is for! Using machine learning, we've created
+                    a model to categorize things as either recyclable or non-recyclable to help us in our quest for
+                    a more sustainable world.
 
                 </div>
+
+                <Button variant="contained" style={third} onClick={() => {navigate("/upload")
+                      }}>Check Recyclables!</Button>
             </Card>
             <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -300, zIndex: -1}}/>
       <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 0, zIndex: -1}}/>
