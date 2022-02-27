@@ -23,16 +23,16 @@ function App() {
     const tfReady = await tf.ready();
 
     const modelJson = await require('./model/model.json');
-    const modelWeight = await require('./model/group1-shard.bin');
-    // const model = await tf.loadLayersModel(modelJson, modelWeight);
-    const model = await tf.loadLayersModel(MODEL_URL);
+    //const modelWeight = await require('./model/group1-shard.bin');
+    const model = await tf.loadGraphModel(modelJson);
+    //const model = await tf.loadLayersModel(MODEL_URL);
 
     console.log(model)
     dispatch(PizzaSlice.actions.setModel(model));
   };
 
   useEffect(() => {
-    // loadModel();
+    loadModel();
   }, [])
 
   return (

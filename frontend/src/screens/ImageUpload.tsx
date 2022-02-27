@@ -66,7 +66,7 @@ const ImageUpload = () => {
     addUpdateIndex: number[] | undefined
   ) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
+    // console.log(imageList, addUpdateIndex);
     setImage(imageList as never[]);
   };
 
