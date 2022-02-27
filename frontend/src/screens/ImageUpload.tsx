@@ -8,25 +8,25 @@ import { maxHeight, minHeight } from '@mui/system';
 
 const cardStyle = {
   backgroundColor: "#F2DFAF",
-  margin: 10,
+  margin: '2%',
   flex: 1,
   paddingTop: 30,
   justifyContent: 'center',
   alignItems: 'center',
-  minHeight: '50vh',
-  maxHeight: "70vh",
+  minHeight: '60vh',
+  maxHeight: "80vh",
 }
 
 const dragCardStyle = {
   backgroundColor: "#E5C676",
-  margin: 10,
+  margin: '2%',
   flex: 1,
   paddingTop: 30,
   justifyContent: 'center',
   alignItems: 'center',
   // height: '50vh'
-  minHeight: '50vh',
-  maxHeight: "70vh",
+  minHeight: '60vh',
+  maxHeight: "80vh",
 
 }
 
@@ -40,8 +40,10 @@ const third = {
 }
 
 const imageStyle = {
-  width: 100,
-  height: 95,
+  width: '15vw',
+  // height: '10vh',
+  alignSelf: 'center',
+  // marginTop: '30%',
 }
 
 const textTitle = {
@@ -99,7 +101,7 @@ const ImageUpload = () => {
               {...dragProps}>
               {
                 image.length === 0 ? 
-                <div>
+                <div style={{alignItems: 'center', justifyContent: 'center', padding: '10%'}}>
                   <img style={imageStyle} src="/assets/file_icon.png"/>
                   <div style={textTitle}>Upload an Image</div>
                   <Button variant="contained" style={third}>Choose File</Button>
@@ -127,11 +129,13 @@ const ImageUpload = () => {
                 navigate("/webcam");
               }}
               >
+                <div style={{alignItems: 'center', justifyContent: 'center', padding: '10%'}}>
+
                 <img style={imageStyle} src="/assets/photo_icon.png" alt="photo_icon" />
                 <div style={textTitle}>Take a Photo</div>
                 <Button variant="contained" style={third}>Open Webcam</Button>
+            </div>
                 </Card>
-            
             </div>
           </div>
         )}

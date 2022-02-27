@@ -11,10 +11,11 @@ const cardStyle = {
   marginRight: '10vw',
   marginLeft: '10vw',
   flex: 1,
+  padding: 50,
   paddingTop: 30,
   paddingBottom: 30,
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   minHeight: '60vh',
 //   maxHeight: "70vh",
 }
@@ -38,7 +39,8 @@ const textTitle = {
     fontSize: 30,
     marginTop: 20,
     fontWeight: 200,
-    letterSpacing: 1.5
+    letterSpacing: 1.5,
+    marginBottom: 10,
 }
 
 const About = () => {
