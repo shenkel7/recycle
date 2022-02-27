@@ -105,6 +105,14 @@ const ResponsiveAppBar = () => {
                 Upload
               </Button>
             </Link>
+            <Link href="/about">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                About
+              </Button>
+            </Link>
             <Link href="/">
               <Button
                 onClick={handleCloseNavMenu}
