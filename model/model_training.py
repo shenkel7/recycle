@@ -161,3 +161,4 @@ model_history=model.fit(train_images,
                         callbacks = callback_list,
                         verbose = 1)
 # %%
+# saving the trained model 
