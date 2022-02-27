@@ -1,5 +1,5 @@
 import { Button, Card } from '@mui/material';
-import React from 'react'
+import React, {useRef} from 'react'
 import ResponsiveAppBar from '../components/Navbar';
 import ImageUploading, {ImageListType} from 'react-images-uploading';
 import './ImageUpload.css'
@@ -36,6 +36,7 @@ const third = {
   padding: "9px 36px",
   fontSize: "18px",
   marginTop: 10,
+  margin: 10,
   fontFamily: 'Lato',
 }
 
@@ -57,6 +58,7 @@ const ImageUpload = () => {
   const [image, setImage] = React.useState([]);
   const maxNumber = 69;
   let navigate = useNavigate();
+  const nextRef = useRef(0);
 
   const onChange = (
     imageList: ImageListType,
@@ -92,6 +94,8 @@ const ImageUpload = () => {
               className="card"
               style={(image.length !== 0 || isDragging) ? dragCardStyle : cardStyle}
               onClick={() => {
+                if(nextRef.current === 1)
+                  return;
                 if(image.length === 0) {
                   onImageUpload() 
                 } else {
@@ -114,6 +118,9 @@ const ImageUpload = () => {
                       <div className="image-item__btn-wrapper">
                         {/* <button onClick={() => onImageUpdate(index)}>Update</button> */}
                         <Button variant="contained" style={third}>Update</Button>
+                        <Button variant="contained" style={third} onClick={() => {navigate("/results")
+                        nextRef.current = 1;
+                      }}>Next</Button>
   
                       </div>
                     </div>
