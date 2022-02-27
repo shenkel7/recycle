@@ -8,7 +8,7 @@ import matplotlib.image as mpimg
 import warnings
 warnings.filterwarnings('ignore')
 import os
-import tensorflow 
+import tensorflow
 import tqdm
 import glob
 import imshow
@@ -21,7 +21,19 @@ from tensorflow.keras.layers import InputLayer, Dense, Flatten, BatchNormalizati
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+
+gpus = tensorflow.config.experimental.list_physical_devices('GPU')
+tensorflow.config.experimental.set_memory_growth(gpus[0], True)
+
+# %%
+
+
 # getting image data from system
+
+
 
 train_data_path = "../model/dataset/TRAIN/"
 test_data_path = "../model/dataset/TEST/"
@@ -158,7 +170,7 @@ callback_list = [earlystopping, checkpoint]
 # %%
 model_history=model.fit(train_images,
                         validation_data=validation_images,
-                        epochs = 10,
+                        epochs = 1,
                         callbacks = callback_list,
                         verbose = 1)
 # %%
@@ -234,3 +246,5 @@ if answer[0][0] > 0.5:
 else:
     print("The image belongs to Organic waste category ")
 
+
+# %%
