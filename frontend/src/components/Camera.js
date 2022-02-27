@@ -11,6 +11,16 @@ const videoConstraints = {
     facingMode: "user"
 };
 
+const disabledButton = {
+    backgroundColor: "#5F6F3A",
+    borderRadius: 15,
+    padding: "9px 36px",
+    fontSize: "18px",
+    marginTop: 10,
+    color: 'white',
+    opacity: .5
+  }
+
 const third = {
     backgroundColor: "#5F6F3A",
     borderRadius: 15,
@@ -97,9 +107,11 @@ export const Camera = () => {
                     }
                 </div>
                 <div style={column}>
-                    <Button variant="contained" onClick={() => {
+                    <Button variant="contained" 
+                    disabled={image.length === 0}
+                    onClick={() => {
                         navigate("/results");
-                    }} style={third}>Next</Button>
+                    }} style={image.length === 0 ? disabledButton : third}>Next</Button>
                 </div>
             </div>
         </div>
