@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Webcam from "react-webcam";
 import { Button, Card } from '@mui/material';
+import { Link, useNavigate } from "react-router-dom";
 
 // const WebcamComponent = () => <Camera />;
 
@@ -57,6 +58,7 @@ export const Camera = () => {
 
     const [image,setImage]=useState('');
     const webcamRef = React.useRef(null);
+  let navigate = useNavigate();
 
     const capture = React.useCallback(
         () => {
@@ -95,7 +97,9 @@ export const Camera = () => {
                     }
                 </div>
                 <div style={column}>
-                    <Button variant="contained" style={third}>Next</Button>
+                    <Button variant="contained" onClick={() => {
+                        navigate("/results");
+                    }} style={third}>Next</Button>
                 </div>
             </div>
         </div>
