@@ -11,7 +11,8 @@ const cardStyle = {
   marginRight: '10vw',
   marginLeft: '10vw',
   flex: 1,
-  padding: 50,
+  paddingRight: '10vw',
+  paddingLeft: '10vw',
   paddingTop: 30,
   paddingBottom: 30,
   justifyContent: 'center',
@@ -30,8 +31,8 @@ const third = {
 }
 
 const imageStyle = {
-  width: 100,
-  height: 95,
+    margin: 20,
+  width: '50%',
 }
 
 const textTitle = {
@@ -60,16 +61,20 @@ const About = () => {
                 }}
                 >
                 <div style={textTitle}>Reduce,  Reuse,  Recycle</div>
-                <div>
+                <img style={imageStyle} src="/assets/pexels-photo-761297.jpeg" alt="photo_icon" />
+                <div style={{fontSize: 20, textAlign: 'left'}}>
                     According to the Environmental Protection Agency, 292.4 million tons of 
                     Municipal Solid Waste (in other words, trash) was produced in the United States in 2018.
                     Of those 292.4 million tons, 94 million were recycled and composted: a recycling rate of 32.1
-                    percent. While nothing to scoff at, that still means a whopping 200 million tons of plastic
+                    percent. While nothing to scoff at, that still means a whopping 200 million tons of plastic end up 
+                    landfills or as litter every year. With a growing garbage patch of plastic in the Pacific and carbon
+                    emissions that are projected to overshoot our allowed "tipping point" for global warming,
+                    we know something needs to change.
                     <br /><br/>
-                    To put that into perspective, that means 
+                    Reduce, reuse, recycle. The first two are more effective than recycling, but we recognize
+                    that some things are neither; that's what our app is for!
 
                 </div>
-                <img style={imageStyle} src="/assets/photo_icon.png" alt="photo_icon" />
             </Card>
         </div>
     </div>
