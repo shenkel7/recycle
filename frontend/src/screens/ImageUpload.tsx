@@ -35,7 +35,8 @@ const third = {
   borderRadius: 15,
   padding: "9px 36px",
   fontSize: "18px",
-  marginTop: 10
+  marginTop: 10,
+  fontFamily: 'Lato',
 }
 
 const imageStyle = {

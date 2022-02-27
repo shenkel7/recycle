@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const first = {
     color: 'black',
-    paddingTop: '2em',
+    // paddingTop: '2em',
     textAlign: 'left',
     position: 'relative',
     left: '100px',
@@ -33,7 +33,8 @@ const third = {
     left: '100px',
     borderRadius: 15,
     padding: "9px 36px",
-    fontSize: "18px"
+    fontSize: "18px",
+    fontFamily: "Lato",
 }
 
 const row = {
@@ -41,12 +42,16 @@ const row = {
 }
 
 const column = {
-    flex: "50%",
+    flex: 1,
     padding: "10px"
 }
 
 const image = {
-    paddingTop: '5em',
+    paddingTop: '1em',
+    position: 'absolute',
+    opacity: .7,
+    right: "10vw",
+    zIndex: -1
 }
 
 const Home = () => {
@@ -59,7 +64,7 @@ const Home = () => {
                         <h1>Find out if an item is recyclable.</h1>
                     </div>
                     <div style={second}>
-                        <h2>Click the button below to begin.</h2>
+                        <h2>Sustainability, one item at a time.</h2>
                     </div>
                     <Link to="/upload">
                         <Button variant="contained" style={third}>START</Button>

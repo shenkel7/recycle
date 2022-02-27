@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Webcam from "react-webcam";
+import { Button, Card } from '@mui/material';
 
 // const WebcamComponent = () => <Camera />;
 
@@ -9,14 +10,23 @@ const videoConstraints = {
     facingMode: "user"
 };
 
-const button_style = {
+const third = {
     backgroundColor: "#5F6F3A",
-    left: '550px',
-    position: 'absolute',
     borderRadius: 15,
-    padding: "12px 49px",
-    fontSize: "22px"
-}
+    padding: "9px 36px",
+    fontSize: "18px",
+    marginTop: 10,
+    color: 'white',
+  }
+
+// const button_style = {
+//     backgroundColor: "#5F6F3A",
+//     left: '550px',
+//     position: 'absolute',
+//     borderRadius: 15,
+//     padding: "12px 49px",
+//     fontSize: "22px"
+// }
 
 const button_style2 = {
     backgroundColor: "#5F6F3A",
@@ -39,7 +49,7 @@ const row = {
 
 const column = {
     paddingTop: '2em',
-    flex: "50%",
+    flex: 1,
     padding: "5px"
 }
 
@@ -70,23 +80,22 @@ export const Camera = () => {
             <div style={row}>
                 <div style={column}>
                     {image != '' ?
-                        <button onClick={(e) => {
+                        <Button onClick={(e) => {
                             e.preventDefault();
                             setImage('')
                         }} 
-                        style={button_style}>
-                            Retake </button>
+                        style={third}>
+                            Retake </Button>
                             :
-                        <button onClick={(e) => {
+                        <Button onClick={(e) => {
                             e.preventDefault();
                             capture();
                         }}
-                        style={button_style}>Capture</button>
+                        style={third}>Capture</Button>
                     }
                 </div>
                 <div style={column}>
-                    <button style={button_style2}>Next</button>
-                    {/* to do: disable button at first, but when user captures image, button can be clicked */}
+                    <Button variant="contained" style={third}>Next</Button>
                 </div>
             </div>
         </div>
