@@ -5,6 +5,7 @@ import ImageUploading, {ImageListType} from 'react-images-uploading';
 import './ImageUpload.css'
 import { Link, useNavigate } from "react-router-dom";
 import { maxHeight, minHeight } from '@mui/system';
+import cam from '../images/photo.svg'
 
 const cardStyle = {
   backgroundColor: "#F2DFAF",
@@ -141,7 +142,7 @@ const ImageUpload = () => {
               >
                 <div style={{alignItems: 'center', justifyContent: 'center', padding: '10%'}}>
 
-                <img style={imageStyle} src="/assets/photo_icon.png" alt="photo_icon" />
+                <img style={imageStyle} src={cam} alt="photo_icon" />
                 <div style={textTitle}>Take a Photo</div>
                 <Button variant="contained" style={third}>Open Webcam</Button>
             </div>
