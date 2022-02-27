@@ -1,6 +1,8 @@
 import ResponsiveAppBar from '../components/Navbar'
 import Button from '@mui/material/Button';
 import recycle_icon from '../images/recycle 1.svg'
+import { Link, useNavigate } from "react-router-dom";
+
 
 const first = {
     color: 'black',
@@ -59,7 +61,9 @@ const Home = () => {
                     <div style={second}>
                         <h2>Click the button below to begin.</h2>
                     </div>
-                    <Button variant="contained" style={third}>START</Button>
+                    <Link to="/upload">
+                        <Button variant="contained" style={third}>START</Button>
+                    </Link>
                 </div>
                 <div style={column}>
                     <div style={image}>
