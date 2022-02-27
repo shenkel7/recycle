@@ -54,12 +54,12 @@ const Results = () => {
 useEffect(() => {
 
   return () => {
-    dispatch(PizzaSlice.actions.setIndex(index + 1 > 2 ? 0 : index + 1))
+    dispatch(PizzaSlice.actions.setIndex(index + 1 > 1 ? 0 : index + 1))
   }
 }, [])
 
   const resultDisplay = () => {
-    if(index === 2) {
+    if(index === 1) {
       return(
         <div>
           This item is NOT recyclable.
