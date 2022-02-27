@@ -14,7 +14,7 @@ const cardStyle = {
   marginRight: '10vw',
   marginLeft: '10vw',
   flex: 1,
-  paddingTop: 30,
+  paddingTop: '8vh',
   paddingBottom: 30,
   justifyContent: 'center',
   alignItems: 'center',
@@ -33,23 +33,42 @@ const third = {
 }
 
 const imageStyle = {
-  width: 100,
-  height: 95,
+  // width: 100,
+  // height: 95,
+  height: '40vh'
+  // height: 1000
+
 }
 
 const textTitle = {
     fontFamily: 'Lato',
     fontSize: 30,
     marginTop: 20,
-    fontWeight: 100
+    fontWeight: 100,
+  marginRight: '5vw',
+  marginLeft: '5vw',
+}
+
+const pStyle = {
+  // fontFamily: 'Roboto',
+  fontSize: 20,
+  marginTop: 20,
+  fontWeight: 10,
+  marginBottom: '5vh',
+  marginRight: '5vw',
+  marginLeft: '5vw',
 }
 
 const Results = () => {
-  const [image, setImage] = React.useState([]);
   const maxNumber = 69;
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const index = useSelector(state => state.user.index)
+
+  const image = useSelector(state => state.user.image)
+  const imageFile = useSelector(state => state.user.imageFile)
+
+  console.log(image)
 
 useEffect(() => {
 
@@ -61,15 +80,28 @@ useEffect(() => {
   const resultDisplay = () => {
     if(index === 1) {
       return(
-        <div>
+        <>
+        <div style={textTitle}>
           This item is NOT recyclable.
         </div>
+          <div style={pStyle}>
+            Fear not! Some non-recyclable items are also compostable. Before binning it,
+            consider if your item can be composted.
+        </div>
+        </>
       )
     } else {
       return (
-        <div>
+        <>
+        <div style={textTitle}>
         This item is recyclable!
+
         </div>
+        <div style={pStyle}>
+          Toss it in your nearest recycling bin! Plastic, aluminum, and cardboard
+          can be recycled into other objects instead of ending up in landfills.
+        </div>
+        </>
       )
     }
   }
@@ -84,12 +116,20 @@ useEffect(() => {
             onClick={() => {
             }}
             >
+            <img src={image} alt="" style={imageStyle}/>
             {resultDisplay()}
-
             {/* <img style={imageStyle} src="/assets/photo_icon.png" alt="photo_icon" />
             <div style={textTitle}>Take a Photo</div> */}
         </Card>
         <Button variant="contained" onClick={() => navigate('/upload')} style={third}>Upload Another</Button>
+        <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -200, zIndex: -2,
+                        transform: `scaleX(-1)`, 
+                        opacity: .6
+                        // transformOrigin:'left bottom'
+                    }}/>
+            <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 100, zIndex: -2,
+            transform: `scaleX(-1)`, 
+        }}/>
     </div>
   );
 }

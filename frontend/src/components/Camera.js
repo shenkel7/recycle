@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Webcam from "react-webcam";
 import { Button, Card } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import PizzaSlice from '../store/PizzaSlice';
 
 // const WebcamComponent = () => <Camera />;
 
@@ -69,11 +71,13 @@ export const Camera = () => {
     const [image,setImage]=useState('');
     const webcamRef = React.useRef(null);
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
     const capture = React.useCallback(
         () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImage(imageSrc)
+            dispatch(PizzaSlice.actions.setImage(imageSrc))
         });
 
     return (

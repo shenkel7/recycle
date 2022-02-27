@@ -81,8 +81,12 @@ const About = () => {
 
                 </div>
 
+
                 <Button variant="contained" style={third} onClick={() => {navigate("/upload")
                       }}>Check Recyclables!</Button>
+                <div>
+                  Brought to you with &lt;3 from team MAK(book)!
+                </div>
             </Card>
             <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -300, zIndex: -1}}/>
       <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 0, zIndex: -1}}/>

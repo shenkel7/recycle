@@ -6,6 +6,8 @@ import './ImageUpload.css'
 import { Link, useNavigate } from "react-router-dom";
 import { maxHeight, minHeight } from '@mui/system';
 import cam from '../images/photo.svg'
+import { useDispatch } from 'react-redux';
+import PizzaSlice from '../store/PizzaSlice';
 
 const cardStyle = {
   backgroundColor: "#F2DFAF",
@@ -61,14 +63,17 @@ const ImageUpload = () => {
   const maxNumber = 69;
   let navigate = useNavigate();
   const nextRef = useRef(0);
+  const dispatch = useDispatch()
 
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
     // data for submit
-    // console.log(imageList, addUpdateIndex);
+    console.log(imageList, addUpdateIndex);
     setImage(imageList as never[]);
+    dispatch(PizzaSlice.actions.setImage(imageList[0].dataURL ?? ''));
+    dispatch(PizzaSlice.actions.setImageFile(imageList[0]));
   };
 
   return (
@@ -118,7 +123,7 @@ const ImageUpload = () => {
                 <>
                   {imageList.map((image, index) => (
                     <div key={index} className="image-item" style={{height: "100%"}}>
-                      <img src={image.dataURL} alt="" style={{maxHeight: "40vh"}}/>
+                      <img src={image.dataURL} alt="" style={{maxWidth: "40vw"}}/>
                       <div className="image-item__btn-wrapper">
                         {/* <button onClick={() => onImageUpdate(index)}>Update</button> */}
                         <Button variant="contained" style={third}>Update</Button>

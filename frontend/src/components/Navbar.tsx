@@ -27,14 +27,19 @@ const ResponsiveAppBar = () => {
     <AppBar position="static" style={{ background: '#5F6F3A' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Link href="/"
+          style={{textDecoration: 'none'}}
+          >
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            RE:Cycle
+            sx={{ mr: 2, mt: 0, display: { xs: 'none', md: 'flex' } }}
+            style={{fontFamily: 'Lato', color: 'white'}}
+            >
+            RE:cycle
           </Typography>
+            </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -89,7 +94,9 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Link href="/">
+          <Link href="/"
+          style={{textDecoration: 'none'}}
+          >
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -98,7 +105,9 @@ const ResponsiveAppBar = () => {
                 Home
               </Button>
             </Link>
-            <Link href="/upload">
+            <Link href="/upload"
+          style={{textDecoration: 'none'}}
+            >
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -108,7 +117,9 @@ const ResponsiveAppBar = () => {
                 Upload
               </Button>
             </Link>
-            <Link href="/about">
+            <Link href="/about"
+          style={{textDecoration: 'none'}}
+            >
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -118,18 +129,19 @@ const ResponsiveAppBar = () => {
                 About
               </Button>
             </Link>
-            <Link href="/">
+          </Box>
+            <Link href="/"
+          style={{textDecoration: 'none'}}
+            >
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                style={{fontFamily: 'Lato'}}
+                sx={{color: 'white', display: 'block' }}
+                // style={{fontFamily: 'Lato'}}
 
               >
-                DevPost
+              <img src={tree} alt="Tree" />
               </Button>
             </Link>
-          </Box>
-          <img src={tree} alt="Tree" />
           
         </Toolbar>
       </Container>

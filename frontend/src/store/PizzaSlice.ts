@@ -1,15 +1,25 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { ImageListType, ImageType } from 'react-images-uploading';
 
 export type ProfileState = {
     model: any;
     index: number;
     image: string;
+    imageFile: ImageType;
+    imageUrl: string;
 };
 
 const initialState: ProfileState = {
     model: null,
     index: 0,
     image: '',
+    imageFile: {
+      dataURL: '',
+      file: undefined,
+      key: ''
+      // [key: string]: any;
+  },
+  imageUrl: ''
 } as const;
 
 const PizzaSlice = createSlice({
@@ -24,6 +34,12 @@ const PizzaSlice = createSlice({
     },
     setImage(state, action: PayloadAction<string>) {
       state.image = action.payload;
+    },
+    setImageUrl(state, action: PayloadAction<string>) {
+      state.imageUrl = action.payload;
+    },
+    setImageFile(state, action: PayloadAction<ImageType>) {
+      state.imageFile = action.payload;
     },
   },
 });
