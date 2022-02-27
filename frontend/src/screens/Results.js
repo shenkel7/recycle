@@ -17,6 +17,7 @@ const cardStyle = {
   alignItems: 'center',
   minHeight: '60vh',
 //   maxHeight: "70vh",
+    borderRadius: 20,
 }
 
 const third = {

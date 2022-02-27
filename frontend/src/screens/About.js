@@ -18,7 +18,10 @@ const cardStyle = {
   justifyContent: 'center',
   alignItems: 'flex-start',
   minHeight: '60vh',
-//   maxHeight: "70vh",
+    borderRadius: 20,
+    marginBottom: '8vh',
+    maxWidth: 1000,
+    alignSelf: 'center',
 }
 
 const third = {
@@ -52,7 +55,7 @@ const About = () => {
   return (
     <div className="App">
       <ResponsiveAppBar/>
-      <div style={{flexDirection: "column"}}>
+      <div style={{flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
 
             <Card
                 // onMouseEnter={toggleWebcamHover}
@@ -76,6 +79,8 @@ const About = () => {
 
                 </div>
             </Card>
+            <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -300, zIndex: -1}}/>
+      <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 0, zIndex: -1}}/>
         </div>
     </div>
   );

@@ -49,8 +49,10 @@ const column = {
 const image = {
     paddingTop: '1em',
     position: 'absolute',
-    opacity: .7,
-    right: "10vw",
+    // opacity: .7,
+    right: "5vw",
+    // height: '60vh',
+    top: '30vh',
     zIndex: -1
 }
 
@@ -71,12 +73,22 @@ const Home = () => {
                     </Link>
                 </div>
                 <div style={column}>
-                    <div style={image}>
-                        <img src={recycle_icon} alt="recycling icon" />
+                    <div >
+                        <img style={image} src={recycle_icon} alt="recycling icon" />
                     </div>
                     
                 </div>
             </div>
+
+            <div style={{height: '2vh', overflow: 'hidden'}}>
+            <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -200, zIndex: -2,
+                        transform: `scaleX(-1)`, 
+                        // transformOrigin:'left bottom'
+                    }}/>
+            <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 100, zIndex: -2,
+            transform: `scaleX(-1)`, 
+        }}/>
+        </div>
         </div>
     )
 }

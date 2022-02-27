@@ -93,6 +93,7 @@ const ResponsiveAppBar = () => {
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                style={{fontFamily: 'Lato'}}
               >
                 Home
               </Button>
@@ -101,6 +102,8 @@ const ResponsiveAppBar = () => {
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                style={{fontFamily: 'Lato'}}
+
               >
                 Upload
               </Button>
@@ -109,6 +112,8 @@ const ResponsiveAppBar = () => {
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                style={{fontFamily: 'Lato'}}
+
               >
                 About
               </Button>
@@ -117,6 +122,8 @@ const ResponsiveAppBar = () => {
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                style={{fontFamily: 'Lato'}}
+
               >
                 DevPost
               </Button>

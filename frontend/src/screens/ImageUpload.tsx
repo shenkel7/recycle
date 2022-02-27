@@ -15,6 +15,7 @@ const cardStyle = {
   alignItems: 'center',
   minHeight: '60vh',
   maxHeight: "80vh",
+  borderRadius: 20,
 }
 
 const dragCardStyle = {
@@ -27,7 +28,7 @@ const dragCardStyle = {
   // height: '50vh'
   minHeight: '60vh',
   maxHeight: "80vh",
-
+  borderRadius: 20,
 }
 
 const third = {
@@ -72,6 +73,8 @@ const ImageUpload = () => {
   return (
     <div className="App">
       <ResponsiveAppBar/>
+      <div style={{ height: '100vh', overflow: 'hidden'}}>
+
       <ImageUploading
         value={image}
         onChange={onChange}
@@ -147,6 +150,10 @@ const ImageUpload = () => {
           </div>
         )}
       </ImageUploading>
+      <img src="assets/mountainback.png" style={{position: 'absolute', width: '100vw', right: -10, top: -300, zIndex: -1}}/>
+      <img src="assets/mountainfront.png" style={{position: 'absolute', width: '100vw', right: -10, top: 0, zIndex: -1}}/>
+      </div>
+
     </div>
   );
 }
