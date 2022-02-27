@@ -15,4 +15,4 @@ Reduce, reuse, recycle. The first two are more effective than recycling, but we 
 
 
 ### Try it out
-https://reecycle-13702.web.app/about
+https://reecycle-13702.web.app/
