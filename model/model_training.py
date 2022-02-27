@@ -11,6 +11,7 @@ import os
 import tensorflow 
 import tqdm
 import glob
+import imshow
 from tqdm import tqdm
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -161,4 +162,75 @@ model_history=model.fit(train_images,
                         callbacks = callback_list,
                         verbose = 1)
 # %%
-# saving the trained model 
+## Saving the trained model
+
+model.save('model\saved_models\trained_model_v1.h5')
+
+# %% 
+# visualizing the training accuracy
+# Summarize the model loss
+
+plt.plot(model_history.history['loss'])
+plt.plot(model_history.history['val_loss'])
+plt.title('Model Loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left', bbox_to_anchor=(1,1))
+plt.show()
+
+# Summarize models auc
+
+plt.plot(model_history.history['auc'])
+plt.plot(model_history.history['val_auc'])
+plt.title('Model AUC')
+plt.ylabel('AUC')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left', bbox_to_anchor=(1,1))
+plt.show()
+
+test_data = test_datagen.flow_from_directory(directory = '../input/waste-classification-data/DATASET/TEST',
+                                             target_size = (224,224),
+                                             class_mode = 'binary',
+                                             batch_size = 128)
+
+# Evaluating Loss and AUC - Test Data 
+
+model.evaluate(test_data)
+
+# Test Case:1 - NON Recyclable
+
+dic = test_data.class_indices
+idc = {k:v for v,k in dic.items()}
+
+img = load_img('../input/waste-classification-data/DATASET/TEST/O/O_12650.jpg', target_size=(224,224))
+img = img_to_array(img)
+img = img / 255
+imshow(img)
+plt.axis('off')
+img = np.expand_dims(img,axis=0)
+answer = model.predict_proba(img)
+
+if answer[0][0] > 0.5:
+    print("The image belongs to Recycle waste category")
+else:
+    print("The image belongs to Cannot Recycle waste category ")
+
+
+# Test Case:2 - RECYCLE
+
+dic = test_data.class_indices
+idc = {k:v for v,k in dic.items()}
+
+img = load_img('../input/waste-classification-data/DATASET/TEST/R/R_10011.jpg', target_size=(224,224))
+img = img_to_array(img)
+img = img / 255
+imshow(img)
+plt.axis('off')
+img = np.expand_dims(img,axis=0)
+answer = model.predict_proba(img)
+
+if answer[0][0] > 0.5:
+    print("The image belongs to Recycle waste category")
+else:
+    print("The image belongs to Organic waste category ")
+
