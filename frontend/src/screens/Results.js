@@ -1,9 +1,12 @@
 import { Button, Card } from '@mui/material';
-import React from 'react'
+import React, { useEffect } from 'react'
 import ResponsiveAppBar from '../components/Navbar';
 import ImageUploading, {ImageListType} from 'react-images-uploading';
 import { Link, useNavigate } from "react-router-dom";
 import { maxHeight, minHeight } from '@mui/system';
+import PizzaSlice from '../store/PizzaSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const cardStyle = {
   backgroundColor: "#F2DFAF",
@@ -45,6 +48,32 @@ const Results = () => {
   const [image, setImage] = React.useState([]);
   const maxNumber = 69;
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const index = useSelector(state => state.user.index)
+
+useEffect(() => {
+
+  return () => {
+    dispatch(PizzaSlice.actions.setIndex(index + 1 > 2 ? 0 : index + 1))
+  }
+}, [])
+
+  const resultDisplay = () => {
+    if(index === 2) {
+      return(
+        <div>
+          This item is NOT recyclable.
+        </div>
+      )
+    } else {
+      return (
+        <div>
+        This item is recyclable!
+        </div>
+      )
+    }
+  }
+
 
   return (
     <div className="App">
@@ -55,10 +84,12 @@ const Results = () => {
             onClick={() => {
             }}
             >
+            {resultDisplay()}
+
             {/* <img style={imageStyle} src="/assets/photo_icon.png" alt="photo_icon" />
             <div style={textTitle}>Take a Photo</div> */}
         </Card>
-        <Button variant="contained" style={third}>Upload Another</Button>
+        <Button variant="contained" onClick={() => navigate('/upload')} style={third}>Upload Another</Button>
     </div>
   );
 }

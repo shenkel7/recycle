@@ -10,7 +10,8 @@ CORS(app)
 class status(Resource):    
      def get(self):
          try:
-            return {'data': 'Api running'}
+            # return {'data': 'Api running'}
+            return send_file('backend/model.json')
          except(error): 
             return {'data': error}
 

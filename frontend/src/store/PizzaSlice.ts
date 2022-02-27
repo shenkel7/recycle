@@ -2,10 +2,14 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export type ProfileState = {
     model: any;
+    index: number;
+    image: string;
 };
 
 const initialState: ProfileState = {
-    model: null
+    model: null,
+    index: 0,
+    image: '',
 } as const;
 
 const PizzaSlice = createSlice({
@@ -14,6 +18,12 @@ const PizzaSlice = createSlice({
   reducers: {
     setModel(state, action: PayloadAction<any>) {
       state.model = action.payload;
+    },
+    setIndex(state, action: PayloadAction<number>) {
+      state.index = action.payload;
+    },
+    setImage(state, action: PayloadAction<string>) {
+      state.image = action.payload;
     },
   },
 });
