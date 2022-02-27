@@ -72,8 +72,8 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
 
                 <MenuItem key="Home" onClick={handleCloseNavMenu}>
-                <Link href="/about">
-                    <Typography textAlign="center">About Us</Typography>
+                <Link href="/upload">
+                    <Typography textAlign="center">Upload</Typography>
                 </Link>
                   
                 </MenuItem>
@@ -97,12 +97,12 @@ const ResponsiveAppBar = () => {
                 Home
               </Button>
             </Link>
-            <Link href="/about">
+            <Link href="/upload">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                About Us
+                Upload
               </Button>
             </Link>
             <Link href="/">
