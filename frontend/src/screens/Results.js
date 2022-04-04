@@ -1,5 +1,5 @@
 import { Button, Card } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ResponsiveAppBar from '../components/Navbar';
 import ImageUploading, {ImageListType} from 'react-images-uploading';
 import { Link, useNavigate } from "react-router-dom";
@@ -68,6 +68,8 @@ const Results = () => {
 
   const image = useSelector(state => state.user.image)
   const imageFile = useSelector(state => state.user.imageFile)
+  const [loading, setLoading] = useState(true);
+  const [prediction, setPrediction] = useState(0)
 
   
   const readImage = (file) => {
@@ -98,15 +100,18 @@ const Results = () => {
         };
 
         // const imageTensor = tf.tensor(image);
-        const imageTensor = tf.browser.fromPixels(imageElement)
-        console.log(imageTensor);
+        let imageTensor = tf.browser.fromPixels(imageElement).resizeBilinear([224, 224])
+        // imageTensor = tf.image.cropAndResize()
+        
 
-        const prediction = model.predict(imageTensor).data()
+        model.predict(tf.expandDims(imageTensor, 0)).data()
           .then((res) => {
-            console.log('pred', res);
+            console.log(res[0]);
+            setLoading(false);
+            setPrediction(res[0])
           })
-
         };
+
 
     }
   }
@@ -116,8 +121,13 @@ const Results = () => {
   }, [model])
 
   const resultDisplay = () => {
+    if(loading){
+        return (<div style={textTitle}>
+            Loading...
+          </div>);
+    }
     
-    if(index === 1) {
+    if(prediction === 0) {
       return(
         <>
         <div style={textTitle}>
