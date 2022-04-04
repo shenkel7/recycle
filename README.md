@@ -14,7 +14,7 @@ Reduce, reuse, recycle. The first two are more effective than recycling, but we 
 
 ### How it works
 
-This app was created with React, Tensorflow/Tensorflowjs, and Firebase hosting! We trained a Tensorflow model with an image library from Kaggle and exported it to a Tensorflow js compatible format, then we load it directly into the frontend to make predictions on images that you can either upload or take using a webcam. Currently, the accuracy of the model has room for improvement--we're working on getting it better.
+This app was created with React, Tensorflow/Tensorflowjs, and Firebase hosting! We trained a Tensorflow model with an image library from Kaggle and exported it to a Tensorflow js compatible format, then we loaded it directly into the frontend to make predictions on images that you can either upload or take using a webcam. Currently, the accuracy of the model has room for improvement--we're working on getting it better.
 
 
 ### Try it out
