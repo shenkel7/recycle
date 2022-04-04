@@ -1,12 +1,12 @@
 import { Button, Card } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ResponsiveAppBar from '../components/Navbar';
 import ImageUploading, {ImageListType} from 'react-images-uploading';
 import { Link, useNavigate } from "react-router-dom";
 import { maxHeight, minHeight } from '@mui/system';
 import PizzaSlice from '../store/PizzaSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import * as tf from '@tensorflow/tfjs';
 
 const cardStyle = {
   backgroundColor: "#F2DFAF",
@@ -64,21 +64,70 @@ const Results = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const index = useSelector(state => state.user.index)
+  const model = useSelector(state => state.user.model)
 
   const image = useSelector(state => state.user.image)
   const imageFile = useSelector(state => state.user.imageFile)
+  const [loading, setLoading] = useState(true);
+  const [prediction, setPrediction] = useState(0)
 
-  console.log(image)
+  
+  const readImage = (file) => {
+    return new Promise((rs, rj) => {
+      const fileReader = new FileReader();
+      fileReader.onload = () => rs(fileReader.result);
+      fileReader.onerror = () => rj(fileReader.error);
+      fileReader.readAsDataURL(file);
+    });
+  };
 
-useEffect(() => {
+  const predict = async () => {
+    // const shape = [1, 4];
+    // console.log(b.shape)
 
-  return () => {
-    dispatch(PizzaSlice.actions.setIndex(index + 1 > 1 ? 0 : index + 1))
+    if(model){
+      const file = image;
+      // const imgData = await readImage(file);
+      const imgData = image;
+
+      const imageElement = document.createElement("img");
+      imageElement.src = imgData;
+
+      imageElement.onload = async () => {
+        const imgSize = {
+          width: imageElement.width,
+          height: imageElement.height,
+        };
+
+        // const imageTensor = tf.tensor(image);
+        let imageTensor = tf.browser.fromPixels(imageElement).resizeBilinear([224, 224])
+        // imageTensor = tf.image.cropAndResize()
+        
+
+        model.predict(tf.expandDims(imageTensor, 0)).data()
+          .then((res) => {
+            console.log(res[0]);
+            setLoading(false);
+            setPrediction(res[0])
+          })
+        };
+
+
+    }
   }
-}, [])
+
+  useEffect(() => {
+    predict();
+  }, [model])
 
   const resultDisplay = () => {
-    if(index === 1) {
+    if(loading){
+        return (<div style={textTitle}>
+            Loading...
+          </div>);
+    }
+    
+    if(prediction === 0) {
       return(
         <>
         <div style={textTitle}>

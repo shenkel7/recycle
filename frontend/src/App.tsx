@@ -13,7 +13,7 @@ import * as tf from '@tensorflow/tfjs';
 
 // TODO change this
 // const MODEL_URL = 'https://reecycles.herokuapp.com/';
-const MODEL_URL = 'http://localhost:3000/model/model.json';
+const MODEL_URL = process.env.PUBLIC_URL + '/model/model.json';
 
 
 function App() {
@@ -21,10 +21,7 @@ function App() {
   
   const loadModel = async () => {
     const tfReady = await tf.ready();
-
-    const modelJson = await require('./model/model.json');
-    //const modelWeight = await require('./model/group1-shard.bin');
-    const model = await tf.loadGraphModel(modelJson);
+    const model = await tf.loadLayersModel(MODEL_URL);
     //const model = await tf.loadLayersModel(MODEL_URL);
 
     console.log(model)
