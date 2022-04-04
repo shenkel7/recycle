@@ -19,3 +19,6 @@ This app was created with React, Tensorflow/Tensorflowjs, and Firebase hosting! 
 
 ### Try it out
 https://reecycle-13702.web.app/
+
+
+![Homepage](https://github.com/shenkel7/recycle/blob/6933e557329cdaf12c03f654da9105b2b3188dcd/homepage.png)
